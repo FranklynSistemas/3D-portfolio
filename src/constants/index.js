@@ -1,4 +1,4 @@
-import { meta, shopify, starbucks, tesla } from "../assets/images";
+import { taxfix, instaleap, galavi, banco } from "../assets/images";
 import {
     car,
     contact,
@@ -11,8 +11,6 @@ import {
     javascript,
     linkedin,
     mongodb,
-    motion,
-    mui,
     nextjs,
     nodejs,
     pricewise,
@@ -23,7 +21,10 @@ import {
     summiz,
     tailwindcss,
     threads,
-    typescript
+    typescript,
+    nestjs,
+    fastify,
+    sql
 } from "../assets/icons";
 
 export const skills = [
@@ -35,6 +36,16 @@ export const skills = [
     {
         imageUrl: express,
         name: "Express",
+        type: "Backend",
+    },
+    {
+        imageUrl: fastify,
+        name: "Fastify",
+        type: "Backend",
+    },
+    {
+        imageUrl: nestjs,
+        name: "NestJS",
         type: "Backend",
     },
     {
@@ -61,16 +72,6 @@ export const skills = [
         imageUrl: mongodb,
         name: "MongoDB",
         type: "Database",
-    },
-    {
-        imageUrl: motion,
-        name: "Motion",
-        type: "Animation",
-    },
-    {
-        imageUrl: mui,
-        name: "Material-UI",
-        type: "Frontend",
     },
     {
         imageUrl: nextjs,
@@ -106,61 +107,69 @@ export const skills = [
         imageUrl: typescript,
         name: "TypeScript",
         type: "Frontend",
+    },
+    {
+        imageUrl: sql,
+        name: "Sql",
+        type: "Database",
     }
 ];
 
 export const experiences = [
     {
-        title: "React.js Developer",
-        company_name: "Starbucks",
-        icon: starbucks,
-        iconBg: "#accbe1",
-        date: "March 2020 - April 2021",
+        title: "Senior Full Stack Engineer",
+        company_name: "Taxfix",
+        icon: taxfix,
+        iconBg: "#adee686b",
+        date: "Jan 2021 - Present",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Designed and implemented innovative services for primary users in Germany, expanding tax-filing options. Employed diverse approaches to address user needs, resulting in the successful delivery of a new service in just 6 months.",
+            "Crafted RFCs to define both functional and non-functional requirements for various new initiatives. Successfully delivered systems within reasonable timelines by creating and managing tickets, overseeing implementation, and maintaining transparent communication with stakeholders, addressing potential blockers and significant changes.",
+            "Enhanced existing pub/sub-workers for improved efficiency and clarity. Simplified the implementation of new workers by studying and applying relevant design patterns tailored to the company's specific requirements and goals.",
+            "Conducted interviews for senior candidates, assessing their programming, communication, and design system skills to identify top talent for the team.",
         ],
+        techStack: ["JS", "React Native", "ReactJS", "NodeJS", "TS", "Fastify", "NestJs", "StoryBook", "GCP", "Firebase", "Swagger", "MySQL", "Prometheus Monitoring", "Docker", "Jest", "Notion", "Jira", "Github"],
     },
     {
-        title: "React Native Developer",
-        company_name: "Tesla",
-        icon: tesla,
-        iconBg: "#fbc3bc",
-        date: "Jan 2021 - Feb 2022",
+        title: "Senior Full Stack Engineer",
+        company_name: "Instaleap",
+        icon: instaleap,
+        iconBg: "#2bde73b5",
+        date: "May 2017 - Dec 2021",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Created  3+ new systems from zero to pivot the company’s business from a B-to-C model to a B-to-B by working fast and interacting with multiple teams to achieve the release of our new products in less than 4 months and get 5+ new clients and keep our first ones.",
+            "Designed and built different software solutions by making use of microservices architecture to be capable of handling high concurrency and keeping good user experience, working with AWS and Firebase.",
+            "Developed new requirements by working hand in hand with the product manager to help to understand the client's needs and be able to deliver the best solution as fast as possible.",
+            "Improving the existing applications by fixing bugs and finding better ways to optimize the existing database queries to maintain the enormous growth of the company in the short term, resulting in a 200% of growth in orders processed year to year.",
+            "Built unit tests with Mocha and Chai for NodeJS and worked for hand in hand with the QA team to reduce the production errors by 99.99% in each two weeks release."
         ],
+        techStack: ["JS", "ReactJS", "NodeJS", "TS", "ExpressJS", "NestJs", "GCP", "Firebase", "MySQL", "MongoDB", "Jest", "Mocha", "Chai", "Notion", "Jira", "Github", "Styled-Components", "AWS(CodePipeline, CloudFormation, CloudFront, S3)", "Postgresql", "RabbitMQ"],
     },
     {
-        title: "Web Developer",
-        company_name: "Shopify",
-        icon: shopify,
-        iconBg: "#b7e4c7",
-        date: "Jan 2022 - Jan 2023",
+        title: "Full Stack Engineer",
+        company_name: "Grupo Galavi S.A.S",
+        icon: galavi,
+        iconBg: "#038f99bf",
+        date: "March 2016 - May 2017",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
+            "Developed web applications with NodeJS and AngularJS v1 like a system to extract the daily hundreds of public contracts from the government web page and release alerts according to the clients' preferences.",
+            "Built mobile applications by making use of  Ionic Framework v1, Socket IO for real-time interactions, and Google Maps to create interactive geolocation tracking for business vehicles.",
+            "Deployed web apps from scratch by making use of Google Cloud Platform.",
             "Participating in code reviews and providing constructive feedback to other developers.",
         ],
+        techStack: ["JS", "AngularJS", "NodeJS", "Ionic", "GCP", "MongoDB", "SocketIO", "Google Maps", "Notion", "Jira", "Github"],
     },
     {
-        title: "Full stack Developer",
-        company_name: "Meta",
-        icon: meta,
-        iconBg: "#a2d2ff",
-        date: "Jan 2023 - Present",
+        title: "Junior Developer",
+        company_name: "Banco de Occidente",
+        icon: banco,
+        iconBg: "#009de35c",
+        date: "Nov 2014 - March 2016",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Participated in the migration from the old stack to a new one creating custom interfaces over .NET, JS, and HTML for the generation of credit and debit notes handled huge money transactions.",
+            "Managed infrastructure over Windows’ server 2003",
         ],
+        techStack: ["JS", "HTML/CSS,", ".NET", "Oracle"],
     },
 ];
 
@@ -173,12 +182,12 @@ export const socialLinks = [
     {
         name: 'GitHub',
         iconUrl: github,
-        link: 'https://github.com/YourGitHubUsername',
+        link: 'https://github.com/FranklynSistemas',
     },
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/YourLinkedInUsername',
+        link: 'https://www.linkedin.com/in/franklynlm/',
     }
 ];
 

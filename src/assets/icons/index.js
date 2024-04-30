@@ -5,8 +5,6 @@ import github from './github.svg'
 import html from './html.svg'
 import javascript from './javascript.svg'
 import mongodb from './mongodb.svg'
-import motion from './motion.svg'
-import mui from './mui.svg'
 import nextjs from './nextjs.svg'
 import nodejs from './nodejs.svg'
 import react from './react.svg'
@@ -26,6 +24,9 @@ import arrow from './arrow.svg'
 import contact from './contact.svg'
 import soundon from './soundon.png'
 import soundoff from './soundoff.png'
+import nestjs from './nestjs.svg'
+import fastify from './fastify.svg'
+import sql from './sql.svg'
 
 export {
     css,
@@ -35,8 +36,6 @@ export {
     html,
     javascript,
     mongodb,
-    motion,
-    mui,
     nextjs,
     nodejs,
     react,
@@ -55,5 +54,8 @@ export {
     arrow,
     contact,
     soundon,
-    soundoff
+    soundoff,
+    nestjs,
+    fastify,
+    sql
 }

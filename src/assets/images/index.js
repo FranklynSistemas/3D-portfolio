@@ -1,15 +1,15 @@
 import hero from './hero.jpg'
-import meta from './meta.png'
-import shopify from './shopify.png'
-import starbucks from './starbucks.png'
-import tesla from './tesla.png'
 import logo from './logo.svg'
+import taxfix from './taxfix.png'
+import instaleap from './instaleap.png'
+import galavi from './galavi.png'
+import banco from './banco.png'
 
 export {
     hero,
-    meta,
-    shopify,
-    starbucks,
-    tesla,
-    logo
+    logo,
+    taxfix,
+    instaleap,
+    galavi,
+    banco
 }
