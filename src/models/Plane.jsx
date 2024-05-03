@@ -50,7 +50,7 @@ export function Plane({ isRotating, ...props }) {
         model or scene
         <primitive object={scene} />
       </mesh>
-      <mesh ref={meshRef} position={[-.7, spacecraftRef.current.position.y, 0]} rotation={[5, 3, 2]}>
+      <mesh ref={meshRef} position={[-.7, 0, 0]} rotation={[5, 3, 2]}>
         <coneGeometry args={[0.1, 0.5, 10]} />
         <meshBasicMaterial color="red" transparent opacity={0.6} />
       </mesh>
