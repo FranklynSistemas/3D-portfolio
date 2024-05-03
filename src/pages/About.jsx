@@ -3,7 +3,6 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 
-import { CTA } from "../components";
 import { experiences, skills } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
@@ -121,10 +120,6 @@ const About = () => {
           </VerticalTimeline>
         </div>
       </div>
-
-      <hr className="border-slate-200" />
-
-      <CTA />
     </section>
   );
 };
