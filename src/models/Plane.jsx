@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { useGLTF, useAnimations  } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import planeScene from "../assets/3d/spacecraft.glb";
+import { ExhaustFire } from "./";
 
 // 3D Model from: https://sketchfab.com/3d-models/stylized-ww1-plane-c4edeb0e410f46e8a4db320879f0a1db
 export function Plane({ isRotating, ...props }) {
@@ -34,13 +35,22 @@ export function Plane({ isRotating, ...props }) {
 
     // Updating the Y position with a sine wave based on time
     spacecraftRef.current.position.y = props.position[1] + amplitude * Math.sin(frequency * time);
-    meshRef.current.position.y = spacecraftRef.current.position.y;
-
-    // Flickering effect
-    const scale = Math.sin(state.clock.elapsedTime * 10) * 0.5 + 1.5;
-    meshRef.current.scale.set(scale, scale, scale);
-    meshRef.current.position.y -= delta * 2; // Motion effect
+    if (meshRef.current) {
+      meshRef.current.position.y = spacecraftRef.current.position.y;
+    }
 });
+
+const getSpaceCraftPosition = () => {
+  let screenPosition;
+
+  if (window.innerWidth < 768) {
+    screenPosition =[props.position[0] - 0.84, props.position[1] + 1.05, props.position[2]];
+  } else {
+    screenPosition = [props.position[0] - 1.5, props.position[1] + 1, props.position[2]];
+  }
+
+  return screenPosition;
+}
 
   
   return (
@@ -50,10 +60,7 @@ export function Plane({ isRotating, ...props }) {
         model or scene
         <primitive object={scene} />
       </mesh>
-      <mesh ref={meshRef} position={[-.7, 0, 0]} rotation={[5, 3, 2]}>
-        <coneGeometry args={[0.1, 0.5, 10]} />
-        <meshBasicMaterial color="red" transparent opacity={0.6} />
-      </mesh>
+      <ExhaustFire ref={meshRef} position={getSpaceCraftPosition()} isSmallScreen={window.innerWidth < 768}/>
     </a.group>
   );
 }
