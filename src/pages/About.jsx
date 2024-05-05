@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -18,6 +19,9 @@ const tooltip = (text) => (
 );
 
 const About = () => {
+  useEffect(() => {
+    sessionStorage.setItem('isVisited', true);
+  }, []);
   return (
     <section className="max-container">
       <h1 className="head-text">

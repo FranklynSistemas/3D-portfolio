@@ -59,25 +59,50 @@ export function Planet({
     setIsRotating(false);
   };
 
-  // Handle pointer (mouse or touch) move event
+  //   // Handle pointer (mouse or touch) move event
+  //   const handlePointerMove = (event) => {
+  //     event.stopPropagation();
+  //     event.preventDefault();
+  //     if (isRotating) {
+  //       // If rotation is enabled, calculate the change in clientX position
+  //       const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+
+  //       // calculate the change in the horizontal position of the mouse cursor or touch input,
+  //       // relative to the viewport's width
+  //       const delta = (clientX - lastX.current) / viewport.width;
+
+  //       // Update the island's rotation based on the mouse/touch movement
+  //       planetRef.current.rotation.y += delta * 0.01 * Math.PI;
+  //       planetRef.current.rotation.x -= delta * 0.01;
+  //       // Update the reference for the last clientX position
+  //       lastX.current = clientX;
+
+  //       // Update the rotation speed
+  //       rotationSpeed.current = delta * 0.01 * Math.PI;
+  //     }
+  //   };
+  // Move the planet based on the pointer movement following a sine wave pattern
   const handlePointerMove = (event) => {
     event.stopPropagation();
     event.preventDefault();
     if (isRotating) {
-      // If rotation is enabled, calculate the change in clientX position
       const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-
-      // calculate the change in the horizontal position of the mouse cursor or touch input,
-      // relative to the viewport's width
       const delta = (clientX - lastX.current) / viewport.width;
-      
-      // Update the island's rotation based on the mouse/touch movement
+
+      // Update the y rotation based on the horizontal movement
       planetRef.current.rotation.y += delta * 0.01 * Math.PI;
 
-      // Update the reference for the last clientX position
+      // Calculate x rotation using a sine function of the y rotation
+      // Here, we modulate the amplitude and frequency of the sine wave as needed
+      const amplitude = -0.5; // Maximum amplitude of the sine wave
+      const frequency = 1; // Frequency of the sine wave
+      planetRef.current.rotation.x =
+        amplitude * Math.sin(frequency * planetRef.current.rotation.y);
+
+      // Update the lastX for the next movement event
       lastX.current = clientX;
 
-      // Update the rotation speed
+      // Keep track of rotation speed
       rotationSpeed.current = delta * 0.01 * Math.PI;
     }
   };
@@ -201,13 +226,13 @@ export function Planet({
         // case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
         //   setCurrentStage(4);
         //   break;
-        case normalizedRotation >= 4.30 && normalizedRotation <= 4.80:
+        case normalizedRotation >= 4.3 && normalizedRotation <= 4.8:
           setCurrentStage(3);
           break;
         case normalizedRotation >= 1.8 && normalizedRotation <= 3:
           setCurrentStage(2);
           break;
-        case normalizedRotation >= 5.60 && normalizedRotation <= 6.20:
+        case normalizedRotation >= 5.6 && normalizedRotation <= 6.2:
           setCurrentStage(1);
           break;
         default:
@@ -215,7 +240,8 @@ export function Planet({
       }
     }
   });
- // {Planet 3D model from: https://sketchfab.com/3d-models/earth-3827e559d4f34387b6757b63678c069b}
+
+  // {Planet 3D model from: https://sketchfab.com/3d-models/earth-3827e559d4f34387b6757b63678c069b}
   return (
     <a.group name="GLTF_SceneRootNode" ref={planetRef} {...props}>
       <a.group name="Earth_0">

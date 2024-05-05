@@ -4,7 +4,7 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 
 import spaceshipScene from "../assets/3d/spaceship_with_fusion_core.glb";
 
-const initialPosition = [-5, 4, -5];
+const initialPosition = [-5, 3, 2];
 
 // 3D Model from: https://sketchfab.com/3d-models/spaceship-with-fusion-core-45aebadf02474c77a3d7069c3176e442
 export function Spaceship() {
@@ -29,7 +29,7 @@ export function Spaceship() {
       // Change direction to backward and rotate the spaceship 180 degrees on the y-axis
       spaceshipRef.current.position.x = initialPosition[0];
       spaceshipRef.current.position.y = initialPosition[1];
-      spaceshipRef.current.position.z = initialPosition[1];
+      spaceshipRef.current.position.z = initialPosition[2];
     } 
 
     // Update the X and Z positions based on the direction

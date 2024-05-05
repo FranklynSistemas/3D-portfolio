@@ -1,19 +1,56 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 
 import majestic from "../assets/majestic-voyage.mp3";
 import { HomeInfo, Loader } from "../components";
 import { soundoff, soundon } from "../assets/icons";
 import { Plane, Sky, Spaceship, Planet } from "../models";
 
+const getRotationY = (stage) => {
+  let rotationY = 0;
+  switch (stage) {
+    case 1:
+      rotationY = -0.31;
+      break;
+    case 2:
+      rotationY = -3.4;
+      break;
+    case 3:
+      rotationY = -1.6;
+      break;
+    default:
+      rotationY = 0;
+  }
+  return rotationY;
+}
+
 const Home = () => {
+  const { stage: stageParam } = useParams();
+  const navigate = useNavigate();
+  
   const audioRef = useRef(new Audio(majestic));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
 
-  const [currentStage, setCurrentStage] = useState(1);
+  const [currentStage, setCurrentStage] = useState(Number(stageParam) || 1);
   const [isRotating, setIsRotating] = useState(false);
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+  const [defaultYRotation, setDefaultYRotation] = useState(null);
+
+  const handleStageChange = (stage) => {
+    if (stage === currentStage || !stage) return;
+    navigate(`/home/${stage}`);
+    setCurrentStage(stage);
+  };
+
+  useEffect(() => {
+    const isReloadedOrBackAction = sessionStorage.getItem('isVisited');
+    if (isReloadedOrBackAction) {
+      setDefaultYRotation(getRotationY(currentStage));
+      sessionStorage.setItem('isVisited', false);
+    }
+  }, []);
 
   useEffect(() => {
     if (isPlayingMusic) {
@@ -24,6 +61,10 @@ const Home = () => {
       audioRef.current.pause();
     };
   }, [isPlayingMusic]);
+
+  useEffect(() => {
+    setCurrentStage(Number(stageParam));
+  }, [stageParam]);
 
   const adjustSpacecraftForScreenSize = () => {
     let screenScale, screenPosition;
@@ -56,8 +97,10 @@ const Home = () => {
     return [screenScale, screenPosition];
   };
 
+ 
+
   const [biplaneScale, biplanePosition] = adjustSpacecraftForScreenSize();
-  const [islandScale, islandPosition] = adjustPlanetForScreenSize();
+  const [planetScale, planetPosition] = adjustPlanetForScreenSize();
 
   return (
     <section className='w-full h-screen relative'>
@@ -80,15 +123,15 @@ const Home = () => {
             groundColor='#000000'
             intensity={3}
           />
-          <Spaceship />
           <Sky isRotating={isRotating} />
+          <Spaceship />
           <Planet
             isRotating={isRotating}
             setIsRotating={setIsRotating}
-            setCurrentStage={setCurrentStage}
-            position={islandPosition}
-            scale={islandScale}
-            rotation={[0, 0, 0]}
+            setCurrentStage={handleStageChange}
+            position={planetPosition}
+            scale={planetScale}
+            rotation={[0, defaultYRotation || 0, 0]}
           />
           <Plane
             isRotating={isRotating}
