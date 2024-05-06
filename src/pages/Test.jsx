@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Canvas } from "@react-three/fiber";
 import { ExhaustFire } from '../models';
 
 const Test = () => {
+  const meshRef = useRef();
     return (
         <section className='w-full h-screen relative'>
             <Canvas
@@ -11,7 +12,7 @@ const Test = () => {
       >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
-        <ExhaustFire position={[0, 0, 0]} />
+        <ExhaustFire ref={meshRef} position={[0, 0, 0]} />
       </Canvas>
         </section>
     );

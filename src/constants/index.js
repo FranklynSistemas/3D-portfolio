@@ -172,13 +172,15 @@ export const experiences = [
         techStack: ["JS", "HTML/CSS,", ".NET", "Oracle"],
     },
 ];
-
-export const socialLinks = [
-    {
+/*
+{
         name: 'Contact',
         iconUrl: contact,
         link: '/contact',
     },
+*/
+
+export const socialLinks = [
     {
         name: 'GitHub',
         iconUrl: github,

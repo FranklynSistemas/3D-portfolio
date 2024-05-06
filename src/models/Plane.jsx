@@ -44,9 +44,9 @@ const getSpaceCraftPosition = () => {
   let screenPosition;
 
   if (window.innerWidth < 768) {
-    screenPosition =[props.position[0] - 0.84, props.position[1] + 1.05, props.position[2]];
+    screenPosition =[props.position[0] - 0.75, props.position[1] + 0.98, props.position[2] - 0.2];
   } else {
-    screenPosition = [props.position[0] - 1.5, props.position[1] + 1, props.position[2]];
+    screenPosition = [props.position[0] - 1.4, props.position[1] + 1, props.position[2] + 0.1];
   }
 
   return screenPosition;
