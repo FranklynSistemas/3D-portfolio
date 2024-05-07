@@ -117,7 +117,6 @@ const Home = () => {
         <Suspense fallback={<Loader />}>
           <directionalLight position={[0, 10, 0]} intensity={5} />
           <ambientLight intensity={0.5} />
-          
           <hemisphereLight
             skyColor='#b1e1ff'
             groundColor='#000000'
